@@ -42,11 +42,14 @@ func main() {
 	if err := run(app, os.Args[1:]); err != nil {
 		log.Fatal(err)
 	}
+
+	app.SaveTasks()
 }
 
 func run(app *App, args []string) error {
 	switch operation := args[0]; operation {
 	case "add":
+		app.TaskAddCommand(args)
 	case "delete":
 	case "update":
 	case "list":

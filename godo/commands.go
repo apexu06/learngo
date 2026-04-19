@@ -2,10 +2,24 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"strings"
+	"time"
 )
 
-func TaskAddCommand(args []string) {
+func (a *App) TaskAddCommand(args []string) {
+	var newTask Task
+
+	if len(args) <= 1 {
+		log.Fatalln("KEIN ARGS DU ARSCHLOCH")
+	}
+
+	newTask.Id = len(a.Tasks) + 1
+	newTask.Content = args[1]
+	newTask.State = "todo"
+	newTask.DateCreated = time.Now()
+
+	a.Tasks = append(a.Tasks, newTask)
 
 }
 
