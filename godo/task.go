@@ -30,7 +30,12 @@ func GetAllTasks(path string) ([]Task, error) {
 	return tasks, nil
 }
 
-func (a *App) AddTask(path string) {
+func (a *App) AddTask() {
+
+	// for _, v := range a.Tasks {
+	// 	println("TASKSSSS")
+	// 	println(v.Content)
+	// }
 
 	jsonData, err := json.Marshal(a.Tasks)
 
@@ -38,12 +43,10 @@ func (a *App) AddTask(path string) {
 		log.Fatalln("Error with marshal", err)
 	}
 
-	println("JSON DATA", jsonData)
-
-	f, err := os.OpenFile("./tasks.json", os.O_WRONLY|os.O_CREATE, 0600)
+	f, err := os.OpenFile("./tasks.json", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
 
 	if err != nil {
-		log.Fatalln("Error with marshal", err)
+		log.Fatalln("Error while opening file", err)
 	}
 
 	defer f.Close()

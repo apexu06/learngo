@@ -8,13 +8,7 @@
   {
     "id": 2,
     "content": "Jakob peggen",
-    "date_created": "2026-04-16T14:30:00Z",
+    "date_created": "2025-04-16T14:30:00Z",
     "state": "in-progress"
-  },
-  {
-    "id": 3,
-    "content": "Task 3",
-    "date_created": "2026-04-16T10:10:00Z",
-    "state": "done"
   }
 ]

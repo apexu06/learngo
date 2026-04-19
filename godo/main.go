@@ -35,11 +35,11 @@ func main() {
 
 	app, err := InitApp("tasks.json")
 
-	app.AddTask(app.Path)
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	app.AddTask()
 	if err := run(app, os.Args[1:]); err != nil {
 		log.Fatal(err)
 	}
