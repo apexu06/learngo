@@ -38,15 +38,18 @@ func (a *App) AddTask(path string) {
 		log.Fatalln("Error with marshal", err)
 	}
 
-	println("JSON DATA" + jsonData)
+	println("JSON DATA", jsonData)
 
-	/*f, err := os.OpenFile("./tasks.json", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+	f, err := os.OpenFile("./tasks.json", os.O_WRONLY|os.O_CREATE, 0600)
 
+	if err != nil {
+		log.Fatalln("Error with marshal", err)
+	}
 
 	defer f.Close()
 
 	if _, err = f.Write(jsonData); err != nil {
 		log.Fatalln("Error while writing to JSON", err)
-	}*/
+	}
 
 }
