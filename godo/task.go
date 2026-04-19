@@ -31,12 +31,6 @@ func GetAllTasks(path string) ([]Task, error) {
 }
 
 func (a *App) AddTask() {
-
-	// for _, v := range a.Tasks {
-	// 	println("TASKSSSS")
-	// 	println(v.Content)
-	// }
-
 	jsonData, err := json.Marshal(a.Tasks)
 
 	if err != nil {

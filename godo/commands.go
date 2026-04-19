@@ -23,8 +23,22 @@ func (a *App) TaskListCommand(args []string) {
 		log.Fatalln("Unrecognized argument: ", args[1])
 	}
 
+	longest := 0
+	for _, t := range a.Tasks {
+		if len(t.Content) > longest {
+			longest = len(t.Content)
+		}
+	}
+
+	longest = max(len("Description"), longest)
+	header := fmt.Sprintf("ID | %-*s | Status\n", longest, "Description")
+
+	for range len(header) {
+		fmt.Printf("-")
+	}
+
 	for _, task := range a.Tasks {
-		fmt.Printf("%d - %s - %s\n", task.Id, task.Content, task.State)
+		fmt.Printf("%2d | %-*s | %s\n", task.Id, longest, task.Content, task.State)
 	}
 
 }
