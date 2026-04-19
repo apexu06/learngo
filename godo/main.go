@@ -39,7 +39,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	app.AddTask()
 	if err := run(app, os.Args[1:]); err != nil {
 		log.Fatal(err)
 	}

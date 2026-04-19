@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"os"
+	"strings"
 )
 
 func TaskAddCommand(args []string) {
@@ -19,30 +18,16 @@ func TaskUpdateCommand(args []string) {
 }
 
 func (a *App) TaskListCommand(args []string) {
-	if len(os.Args) > 2 {
-		log.Fatalln("Unrecognized argument: ", args[1])
-	}
-
-	longest := 0
+	longest := len("Description")
 	for _, t := range a.Tasks {
-		if len(t.Content) > longest {
-			longest = len(t.Content)
-		}
+		longest = max(longest, len(t.Content))
 	}
 
-	longest = max(len("Description"), longest)
-	header := fmt.Sprintf("ID | %-*s | Status", longest, "Description")
+	fmt.Printf("ID | %-*s | Status\n", longest, "Description")
 
-	fmt.Println(header)
-
-	for range len(header) {
-		fmt.Printf("-")
-	}
-
-	fmt.Println()
+	fmt.Printf("---+-%-*s-+---------\n", longest, strings.Repeat("-", longest))
 
 	for _, task := range a.Tasks {
 		fmt.Printf("%2d | %-*s | %s\n", task.Id, longest, task.Content, task.State)
 	}
-
 }
