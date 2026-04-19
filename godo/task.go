@@ -30,7 +30,7 @@ func GetAllTasks(path string) ([]Task, error) {
 	return tasks, nil
 }
 
-func (a *App) AddTask() {
+func (a *App) SaveTasks() {
 	jsonData, err := json.Marshal(a.Tasks)
 
 	if err != nil {

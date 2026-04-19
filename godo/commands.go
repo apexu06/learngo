@@ -31,11 +31,15 @@ func (a *App) TaskListCommand(args []string) {
 	}
 
 	longest = max(len("Description"), longest)
-	header := fmt.Sprintf("ID | %-*s | Status\n", longest, "Description")
+	header := fmt.Sprintf("ID | %-*s | Status", longest, "Description")
+
+	fmt.Println(header)
 
 	for range len(header) {
 		fmt.Printf("-")
 	}
+
+	fmt.Println()
 
 	for _, task := range a.Tasks {
 		fmt.Printf("%2d | %-*s | %s\n", task.Id, longest, task.Content, task.State)
